@@ -1,0 +1,16 @@
+# Optional: a local MySQL for development. Credentials come from .env (see .env.example).
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: hotel-booking-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set in .env}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-hotel_booking}
+      MYSQL_USER: ${MYSQL_USER:-hotel_app}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set in .env}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:

@@ -1,0 +1,10 @@
+package com.example.hotelbooking.web.dto;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+public record CancelBookingRequest(
+        @NotBlank(message = "Email is required.")
+        @Email(message = "Please enter a valid email address.")
+        String email) {
+}
